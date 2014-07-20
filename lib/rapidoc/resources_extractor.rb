@@ -19,7 +19,11 @@ module Rapidoc
       puts "Executing 'rake routes'..." if trace?
 
       routes_doc = RoutesDoc.new
-      routes = Dir.chdir( ::Rails.root.to_s ) { `rake routes` }
+      if routes_filter_regex_pattern.blank?
+        routes = Dir.chdir( ::Rails.root.to_s ) { `rake routes` }
+      else
+        routes = Dir.chdir( ::Rails.root.to_s ) { `rake routes | grep #{routes_filter_regex_pattern}` }
+      end
 
       routes.split("\n").each do |entry|
         routes_doc.add_route( entry ) unless entry.match(/URI/)

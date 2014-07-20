@@ -21,3 +21,4 @@ test/version_tmp
 tmp
 spec/dummy/rapidoc
 spec/dummy/config/rapidoc
+spec/dummy/api

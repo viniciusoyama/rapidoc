@@ -32,6 +32,14 @@ module Rapidoc
       form_file_name controller_dir, f
     end
 
+    def routes_filter_regex_pattern
+      if @@config and @@config['api_match_regex']
+        @@config['api_match_regex']
+      else
+        return ""
+      end
+    end
+
     def controllers_extension
       ( @@config and @@config['controllers_route'] ) ? '.yml' : '.rb'
     end

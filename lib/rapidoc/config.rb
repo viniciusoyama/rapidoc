@@ -110,7 +110,7 @@ module Rapidoc
 
     def target_dir_from_config
       if @@config and @@config.has_key?( "doc_route" )
-        File.join(::Rails.root.to_s, "public/docs/#{@@config['doc_route']}" )
+        File.join(::Rails.root.to_s, @@config['doc_route'] )
       else
         File.join(::Rails.root.to_s, 'public/docs' )
       end
